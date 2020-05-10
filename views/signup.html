@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Registro de Usuarios</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/signup.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Bienvenido</h3>
+                        <p>Estas a 30 segundos de entrar a la comunidad mas grande de venta de bienes y servicios!</p>
+                        <input type="submit" name="" onclick="window.location='./login.html';" value="Iniciar Sesion"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cliente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Proveedor</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Registrarse Como Cliente</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="nameClient" type="text" class="form-control" placeholder="Nombres *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="passwordClient" type="password" class="form-control" placeholder="Contraseña *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="emailClient" type="email" class="form-control" placeholder="Correo Electrónico *" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="lastNameClient" type="text" class="form-control" placeholder="Apellidos *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="checkPasswordClient" type="password" class="form-control"  placeholder="Confirmar Contraseña *" value="" />
+                                        </div>
+                                        <input id="btnRegisterClient" type="submit" class="btnRegister"  value="Registrarse"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Registrarse Como Proveedor</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="nameSupplier" type="text" class="form-control" placeholder="Nombres *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="passwordSupplier" type="password" class="form-control" placeholder="Contraseña *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="emailSupplier" type="email" class="form-control" placeholder="Correo Electrónico *" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="lastNameSupplier" type="password" class="form-control" placeholder="Apellidos *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="checkPasswordSupplier" type="password" class="form-control" placeholder="Confirmar Contraseña *" value="" />
+                                        </div>
+                                        <input id="btnRegisterSupplier" type="submit" class="btnRegister"  value="Registrarse"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<script type="text/javascript">
+
+    $("#btnRegisterClient").click(function () {
+
+        var nameClient = $("#nameClient").val();
+        var lastNameClient = $("#lastNameClient").val();
+        var passwordClient = $("#passwordClient").val();
+        var checkPasswordClient = $("#checkPasswordClient").val();
+        var emailClient = $("#emailClient").val();
+
+        console.log("SI ENTRA Nombres= " + nameClient + " Apellidos = " + lastNameClient + " password = " + passwordClient + " Confirmar pss = " + checkPasswordClient + " email = " + emailClient);
+
+        $.ajax({
+            "url": 'http://localhost:14412/bonita/loginservice?username=' + username + '&password=' + password +  '&redirect=false',
+            "method": "get",
+            "success": function(data) {
+                window.location.href = "../masiv-process/index.html";
+            },
+            "error": function(data){
+                alert
+                    alert("Usuario no encontrado - Intente logearse nuevamente");
+                }
+            })
+        })
+
+    $("#btnRegisterSupplier").click(function () {
+
+        var nameSupplier = $("#nameSupplier").val();
+        var lastNameSupplier = $("#lastNameSupplier").val();
+        var passwordSupplier = $("#passwordSupplier").val();
+        var checkPasswordSupplier = $("#checkPasswordSupplier").val();
+        var emailSupplier = $("#emailSupplier").val();
+
+        console.log("SI ENTRA Nombres= " + nameSupplier + " Apellidos = " + lastNameSupplier + " password = " + passwordSupplier + " Confirmar pss = " + checkPasswordSupplier + " email = " + emailSupplier);
+
+        $.ajax({
+            "url": 'http://localhost:14412/bonita/loginservice?username=' + username + '&password=' + password +  '&redirect=false',
+            "method": "get",
+            "success": function(data) {
+                window.location.href = "../masiv-process/index.html";
+            },
+            "error": function(data){
+                alert
+                    alert("Usuario no encontrado - Intente logearse nuevamente");
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
