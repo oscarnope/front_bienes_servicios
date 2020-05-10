@@ -17,10 +17,10 @@ $(document).ready(function() {
 
 	    $.ajax({
 	      type: "POST",
-	      url: 'http:localhost:8080/login',
+	      url: 'http://localhost:8080/login',
 	      data: JSON.stringify(userLogin),
 	      success: function(data) {
-	        console.log("USUARIO LOGEADO");
+	        console.log("USUARIO LOGEADO" + data);
 	      },
 	      dataType: 'json',
 	      contentType: "application/json"

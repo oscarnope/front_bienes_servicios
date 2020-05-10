@@ -84,54 +84,7 @@
                 </div>
 
             </div>
-<script type="text/javascript">
-
-    $("#btnRegisterClient").click(function () {
-
-        var nameClient = $("#nameClient").val();
-        var lastNameClient = $("#lastNameClient").val();
-        var passwordClient = $("#passwordClient").val();
-        var checkPasswordClient = $("#checkPasswordClient").val();
-        var emailClient = $("#emailClient").val();
-
-        console.log("SI ENTRA Nombres= " + nameClient + " Apellidos = " + lastNameClient + " password = " + passwordClient + " Confirmar pss = " + checkPasswordClient + " email = " + emailClient);
-
-        $.ajax({
-            "url": 'http://localhost:14412/bonita/loginservice?username=' + username + '&password=' + password +  '&redirect=false',
-            "method": "get",
-            "success": function(data) {
-                window.location.href = "../masiv-process/index.html";
-            },
-            "error": function(data){
-                alert
-                    alert("Usuario no encontrado - Intente logearse nuevamente");
-                }
-            })
-        })
-
-    $("#btnRegisterSupplier").click(function () {
-
-        var nameSupplier = $("#nameSupplier").val();
-        var lastNameSupplier = $("#lastNameSupplier").val();
-        var passwordSupplier = $("#passwordSupplier").val();
-        var checkPasswordSupplier = $("#checkPasswordSupplier").val();
-        var emailSupplier = $("#emailSupplier").val();
-
-        console.log("SI ENTRA Nombres= " + nameSupplier + " Apellidos = " + lastNameSupplier + " password = " + passwordSupplier + " Confirmar pss = " + checkPasswordSupplier + " email = " + emailSupplier);
-
-        $.ajax({
-            "url": 'http://localhost:14412/bonita/loginservice?username=' + username + '&password=' + password +  '&redirect=false',
-            "method": "get",
-            "success": function(data) {
-                window.location.href = "../masiv-process/index.html";
-            },
-            "error": function(data){
-                alert
-                    alert("Usuario no encontrado - Intente logearse nuevamente");
-            }
-        })
-    })
-
-</script>
+    
+    <script type="text/javascript" src="../js/signup.js"></script>
 </body>
 </html>
