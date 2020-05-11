@@ -20,8 +20,21 @@ $(document).ready(function() {
 	      url: 'http://localhost:8080/login',
 	      data: JSON.stringify(userLogin),
 	      success: function(data) {
+	        
 	        console.log("USUARIO LOGEADO" + data);
+            
+            if (data.profile === "CLIENT") {
+            	console.log("CLIENTE REGISTRADO" + data);
+            	window.location.replace("../views/showoffers.html");
+            } else{
+            	console.log("PROVEEDOR REGISTRADO" + data);
+            	window.location.replace("../views/showquotes.html");
+			}
 	      },
+	      error: function (xhr, ajaxOptions, thrownError) {
+	      	console.log("SE HA PRESENTADO UN ERROR")
+        	alert("Se ha presentado un error. Intente nuevamente.")
+      	  },
 	      dataType: 'json',
 	      contentType: "application/json"
 	    });

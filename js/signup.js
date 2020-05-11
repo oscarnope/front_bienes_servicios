@@ -32,13 +32,13 @@ $(document).ready(function() {
         var emailSupplier = $("#emailSupplier").val();
         
         user = {
-          email: emailClient,
+          email: emailSupplier,
           password: passwordSupplier,
           name: nameSupplier + " " + lastNameSupplier,
           profile: "SUPPLIER"
         }
 
-        if (passwordSuppliler != checkPasswordSuppliler){
+        if (passwordSupplier != checkPasswordSupplier){
             alert("Las contraseñas no coinciden, ingreselas nuevamente");
         }else{
             registrarUsuario(user); 
@@ -56,16 +56,43 @@ $(document).ready(function() {
             alert("Por favor diligencie el formulario completamente");
 
         }else{
-            
+
+            userCreated = {
+                id: 1,
+                email: user.email,
+                password: user.password,
+                name: user.name,
+                profile: "CLIENT",
+                items: null
+            }
+
+            var queryString = "?id=" + userCreated.id + "&email=" + userCreated.email + "&name=" + userCreated.name;
+
+            if (user.profile === "CLIENT") {
+                window.location.href = "../views/showoffers.html" + queryString;
+            } else{
+                window.location.href = "../views/showquotes.html" + queryString;
+            }
+
             $.ajax({
-              type: "POST",
-              url: 'http://localhost:8080/users',
-              data: JSON.stringify(user),
-              success: function(data) {
-                console.log("USUARIO REGISTRADO" + data);
-              },
-              dataType: 'json',
-              contentType: "application/json"
+                type: "POST",
+                url: 'http://localhost:8080/users',
+                data: JSON.stringify(user),
+                success: function(data) {
+                    if (user.profile === "CLIENT") {
+                        console.log("CLIENTE REGISTRADO" + data);
+                        window.location.replace("../views/showoffers.html");
+                    } else{
+                        console.log("PROVEEDOR REGISTRADO" + data);
+                        window.location.replace("../views/showquotes.html");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log("SE HA PRESENTADO UN ERROR AL REALIZAR EL REGISTRO")
+                    alert("Se ha presentado un error al realizar el registro. Intente nuevamente.")
+                },
+                dataType: 'json',
+                contentType: "application/json"
             });
         }
     }
